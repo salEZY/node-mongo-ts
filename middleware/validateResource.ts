@@ -10,7 +10,7 @@ const validate =
           query: req.query,
           params: req.params,
         });
-        console.log('daa')
+
         next()
       } catch (e: any) {
         return res.status(400).send(e.errors);
