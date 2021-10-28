@@ -9,9 +9,9 @@ export async function createUserHandler(
 ) {
   try {
     const user = await createUser(req.body);
-    return user;
+    res.status(201).json({ user })
   } catch (err: any) {
     logger.error(err);
-    res.status(409).send(err.message);
+    return res.status(409).send(err.message);
   }
 }
