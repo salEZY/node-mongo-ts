@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import config from "config";
 
 export interface UserDocument extends mongoose.Document {
+  _id: string;
   name: string;
   email: string;
   password: string;
