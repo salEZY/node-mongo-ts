@@ -1,7 +1,12 @@
-import Session from "../models/session.model";
+import { FilterQuery } from "mongoose";
+import Session, { SchemaDocument } from "../models/session.model";
 
 export async function createSession(userId: string, userAgent: string) {
-    const session = await Session.create({ user: userId, userAgent })
+  const session = await Session.create({ user: userId, userAgent });
 
-    return session.toJSON()
+  return session.toJSON();
+}
+
+export async function findSessions(query: FilterQuery<SchemaDocument>) {
+  return await Session.find(query).lean();
 }
