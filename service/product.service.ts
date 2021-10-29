@@ -9,14 +9,14 @@ import Product, { ProductDocument } from "../models/product.model";
 export async function createProduct(
   input: DocumentDefinition<Omit<ProductDocument, "createdAt" | "updatedAt">>
 ) {
-  return Product.create(input);
+  return await Product.create(input);
 }
 
 export async function findProduct(
   query: FilterQuery<ProductDocument>,
   options: QueryOptions = { lean: true }
 ) {
-  return Product.findOne(query, {}, options);
+  return await Product.findOne(query, {}, options);
 }
 
 export async function updateProduct(
@@ -24,9 +24,9 @@ export async function updateProduct(
   update: UpdateQuery<ProductDocument>,
   options: QueryOptions
 ) {
-  return Product.findOneAndUpdate(query, update, options);
+  return await Product.findOneAndUpdate(query, update, options);
 }
 
 export async function deleteProduct(query: FilterQuery<ProductDocument>) {
-  return Product.deleteOne(query);
+  return await Product.deleteOne(query);
 }
