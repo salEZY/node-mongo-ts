@@ -5,14 +5,10 @@ const publicKey = config.get<string>("public_key");
 const secretKey = config.get<string>("secret_key");
 
 export function signJwt(object: Object, options?: jwt.SignOptions | undefined) {
-  try {
-    return jwt.sign(object, secretKey, {
-      ...(options && options),
-      // algorithm: "RS256",
-    });
-  } catch (error) {
-    console.log(error);
-  }
+  return jwt.sign(object, secretKey, {
+    ...(options && options),
+    // algorithm: "RS256",
+  });
 }
 
 export function verifyJwt(token: string) {
